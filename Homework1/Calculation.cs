@@ -1,14 +1,9 @@
 ﻿using System;
 namespace Homework1
 {
+	// Simple class with calculation methods. All methods return double value.
 	public class Calculation
 	{
-		public double Operation(double aNumber, double bNumber, int operationIndex)
-		{
-
-
-			return 0;
-		}
 
 		public double Addition(double aNumber, double bNumber)
 		{
