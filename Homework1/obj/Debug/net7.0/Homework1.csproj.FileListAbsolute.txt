@@ -1,0 +1,15 @@
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/bin/Debug/net7.0/Homework1
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/bin/Debug/net7.0/Homework1.deps.json
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/bin/Debug/net7.0/Homework1.runtimeconfig.json
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/bin/Debug/net7.0/Homework1.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/bin/Debug/net7.0/Homework1.pdb
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.csproj.AssemblyReference.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.AssemblyInfoInputs.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.AssemblyInfo.cs
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.csproj.CoreCompileInputs.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/refint/Homework1.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.pdb
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/Homework1.genruntimeconfig.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework1/obj/Debug/net7.0/ref/Homework1.dll
