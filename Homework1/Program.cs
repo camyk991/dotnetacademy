@@ -46,11 +46,13 @@ class Program
                     result = calculation.Factorial(inputValues[0]);
                     break;
                 default:
-                    Console.WriteLine("\nIt is not an option.");
+                    Console.WriteLine("\nIt is not an option.\n");
+                    isValidInput = false;
                     break;
             }
 
-            Console.WriteLine("\nResult is: " + result.ToString() + "\n\n");
+            if (isValidInput)
+                Console.WriteLine("\nResult is: " + result.ToString() + "\n\n");
         }
     }
 
