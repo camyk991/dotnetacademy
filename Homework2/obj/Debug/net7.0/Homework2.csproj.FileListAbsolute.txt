@@ -1,0 +1,15 @@
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.csproj.AssemblyReference.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.AssemblyInfoInputs.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.AssemblyInfo.cs
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.csproj.CoreCompileInputs.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/bin/Debug/net7.0/Homework2
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/bin/Debug/net7.0/Homework2.deps.json
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/bin/Debug/net7.0/Homework2.runtimeconfig.json
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/bin/Debug/net7.0/Homework2.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/bin/Debug/net7.0/Homework2.pdb
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/refint/Homework2.dll
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.pdb
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/Homework2.genruntimeconfig.cache
+/Users/inmos/Projects/dotNet/dotnetacademy/Homework2/obj/Debug/net7.0/ref/Homework2.dll
