@@ -4,8 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        int operationIndex = 0;
-        double result = 0;
+        var operationIndex = 0;
+        var result = 0.0;
+        
         Calculation calculation = new Calculation();
 
         while (operationIndex != 7)

@@ -33,7 +33,7 @@ namespace Homework1
 			return Math.Pow(aNumber, bNumber);
 		}
 
-		public double Factorial(double aNumber)
+		public double Factorial(double aNumber)//2.2
 		{
 			if (aNumber < 0)
 				return 0;
