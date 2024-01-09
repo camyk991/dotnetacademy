@@ -124,8 +124,14 @@ namespace Homework2
             List<Vehicle> vehiclesRequiringMaintenance = VehicleList
                 .Where(vehicle =>
                 {
-                    int maintenanceInterval = (vehicle.Type == "CARGO") ? 15000 : 5000;
-                    int remainingDistance = maintenanceInterval - (vehicle.Mileage % maintenanceInterval);
+                    int maintenanceInterval = 15000;
+
+                    if (vehicle.Type == "PASSENGER")
+					{
+						maintenanceInterval = 5000;
+					}
+
+                   int remainingDistance = maintenanceInterval - (vehicle.Mileage % maintenanceInterval);
                     return remainingDistance <= 1000 && vehicle.Mileage > 0; 
                 })
                 .ToList();
