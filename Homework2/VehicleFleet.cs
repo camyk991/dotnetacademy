@@ -22,6 +22,7 @@ namespace Homework2
                 Console.WriteLine($"Color: {vehicle.Color}");
                 Console.WriteLine($"Price: {vehicle.Price}");
                 Console.WriteLine($"Registration Number: {vehicle.RegistrationNumber}");
+                Console.WriteLine($"Comfort class: {vehicle.ComfortClass}");
                 Console.WriteLine($"Start of Service Date: {vehicle.StartOfServiceDate}");
                 Console.WriteLine($"Mileage: {vehicle.Mileage}");
                 Console.WriteLine("\n --- \n");
@@ -96,13 +97,41 @@ namespace Homework2
 				
 			}
 
-			return total;
+			return Math.Round(total, 2);
 		}
 
 		public void DisplayTotalValueOfEntireFleet()
 		{
 			Console.WriteLine(CalculateTotalValueOfEntireFleet().ToString());
 		}
-	}
+
+		public void DisplayVehiclesOfSpecifiedColorAndBrandSortedByComfortClass(string brand, string color)
+		{
+            List<Vehicle> vehiclesOfSpecifiedColorAndBrand = (List<Vehicle>)VehicleList
+                .Where(vehicle =>
+                {
+                    return vehicle.Brand.ToLower() == brand.ToLower() && vehicle.Color.ToLower() == color.ToLower();
+                })
+                .ToList();
+
+			vehiclesOfSpecifiedColorAndBrand.Sort((vehicle1, vehicle2) => vehicle1.ComfortClass.CompareTo(vehicle2.ComfortClass));
+
+			DisplayGivenVehicles(vehiclesOfSpecifiedColorAndBrand);
+        }
+
+        public void DisplayVehiclesRequiringMaintenance()
+        {
+            List<Vehicle> vehiclesRequiringMaintenance = VehicleList
+                .Where(vehicle =>
+                {
+                    int maintenanceInterval = (vehicle.Type == "CARGO") ? 15000 : 5000;
+                    int remainingDistance = maintenanceInterval - (vehicle.Mileage % maintenanceInterval);
+                    return remainingDistance <= 1000 && vehicle.Mileage > 0; 
+                })
+                .ToList();
+
+            DisplayGivenVehicles(vehiclesRequiringMaintenance);
+        }
+    }
 }
 
