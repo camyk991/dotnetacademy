@@ -15,6 +15,7 @@ namespace Homework2
         public string RegistrationNumber { get; set; }
         public int Mileage { get; set; }
         public string Type { get; set; }
+        public DateTime StartOfServiceDate { get; set; }
 
         public static decimal PriceForKilometer = 0.30M;
         private static int NextAvailableId = 0;
