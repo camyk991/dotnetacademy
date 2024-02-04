@@ -360,3 +360,4 @@ MigrationBackup/
 #Src/.idea/
 /Src/TDSB.RSWDL.Campaign.sln.DotSettings
 /Src/**/local.settings.json
+.DS_Store
