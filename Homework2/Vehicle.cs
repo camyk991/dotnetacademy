@@ -27,6 +27,10 @@ namespace Homework2
             NextAvailableId++;
         }
 
+        //public override string ToString()
+        //{
+        //    return $"{};
+        //}
 
         protected decimal CalculateBaseOfRentalCost(int durationOfTrip, int travelDistance, int carCoefficient)
         {

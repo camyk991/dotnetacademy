@@ -12,8 +12,9 @@ namespace Homework2
 
 		private void DisplayGivenVehicles(List<Vehicle> vehicles)
 		{
+
             foreach (var vehicle in vehicles)
-            {
+            {	
                 Console.WriteLine($"Id: {vehicle.Id}");
                 Console.WriteLine($"Type: {vehicle.Type}");
                 Console.WriteLine($"Brand: {vehicle.Brand}");
@@ -37,10 +38,7 @@ namespace Homework2
 		public void DisplayVehiclesOfSpecifiedBrand(string brand)
 		{
             List<Vehicle> vehiclesOfSpecifiedBrand = (List<Vehicle>)VehicleList
-				.Where(vehicle =>
-					{
-						return vehicle.Brand.ToLower() == brand.ToLower();
-					})
+				.Where(vehicle => vehicle.Brand.ToLower() == brand.ToLower())
 				.ToList();
 
 			DisplayGivenVehicles(vehiclesOfSpecifiedBrand);
@@ -53,7 +51,7 @@ namespace Homework2
 				{
                     var yearsInService = DateTime.Now.Year - vehicle.StartOfServiceDate.Year;
 
-                    if (vehicle.Type == "CARGO")
+                    if (vehicle.Type == "CARGO") 
 					{
                         return vehicle.Mileage > 1000000 || yearsInService > 15;
                     } else
