@@ -1,62 +1,88 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Program
 {
-    static async Task Main()
+    static void Main()
     {
-        string booksPath = @"/Users/inmos/Projects/dotNet/dotnetacademy/Homework3/books";
+        var booksPath = @"/Users/inmos/Projects/dotNet/dotnetacademy/Homework3/books";
 
-        string[] textFiles = Directory.GetFiles(booksPath, "*.txt");
+        var textFiles = Directory.GetFiles(booksPath, "*.txt");
 
-        Task[] tasks = textFiles.Select(file => ProcessFile(file)).ToArray();
-
-        await Task.WhenAll(tasks);
+        Parallel.ForEach(textFiles, ProcessFile);
     }
 
-    static async Task ProcessFile(string filePath)
+    static void ProcessFile(string filePath)
     {
-        string content = await File.ReadAllTextAsync(filePath);
+        var content = File.ReadAllText(filePath);
         char[] wordSplitCharacters = { ' ', '\t', '\n', '\r', '.', ',', ';', ':', '!', '?' };
 
-        string[] sentences = Regex.Split(content, @"(?<=[.!?])\s+")
-                                .Where(sentence => !string.IsNullOrWhiteSpace(sentence))
-                                .ToArray();
+        var paragraphs = content.Split(new string[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-        string[] words = content.Split(wordSplitCharacters)
+        var sentences = paragraphs.SelectMany(paragraph =>
+            Regex.Split(paragraph, @"(?<=[.!?])(?:\s+(?=\S)|$)")
+                .Where(sentence => !string.IsNullOrWhiteSpace(sentence)))
+                .ToArray();
+
+        var words = content.Split(wordSplitCharacters)
                                 .Where(word => !string.IsNullOrWhiteSpace(word))
                                 .ToArray();
 
-        int punctuationCount = content.Count(char.IsPunctuation);
-
-        if (!Directory.Exists(@"/Users/inmos/Projects/dotNet/dotnetacademy/Homework3/output-books"))
-        {
-            Directory.CreateDirectory(@"/Users/inmos/Projects/dotNet/dotnetacademy/Homework3/output-books");
-        }
+        var punctuationCharacters = content.Where(char.IsPunctuation).ToArray();
 
 
-        string longestSenteceByNumberOfCharacters = sentences.OrderBy(x => x.Length).Last();
+        var longestSenteceByNumberOfCharacters = sentences.OrderBy(x => x.Length).Last();
 
-        string shortestSentenceByNumberOfWords = sentences.OrderBy(x => x.Split(wordSplitCharacters).Length).First();
+        var shortestSentenceByNumberOfWords = sentences.OrderBy(x => x.Split(wordSplitCharacters, StringSplitOptions.RemoveEmptyEntries).Length).FirstOrDefault().Trim();
+        var longestWord = words.Where(w => !w.Any(char.IsPunctuation)).OrderByDescending(x => x.Length).FirstOrDefault();
 
-        string longestWord = words.OrderBy(x => x.Length).Last();
-
-        char mostCommonLetter = words
+        var mostCommonLetter = words
             .SelectMany(word => word.ToLower())
             .GroupBy(letter => letter)
             .OrderBy(letters => letters.Count())
             .Select(group => group.Key)
             .Last();
 
-        string[] wordsSortedByTheNumberOfUsesInDescendingOrder =
-            words
+        var wordsSortedByTheNumberOfUsesInDescendingOrder =
+            string.Join("\n\r",
+                words
+                .Select(word => word.Trim('"'))
+                .Where(word => !word.Any(char.IsPunctuation))
                 .GroupBy(word => word.ToLower())
                 .OrderByDescending(word => word.Count())
                 .Select(group => group.Key)
-                .ToArray();
+                .ToArray()
+                );
+              
+
+        var titlePattern = @"Title:\s*(.*?)\s*[\n\r]";
+        var title = Regex.Match(content, titlePattern).Groups[1].Value;
+
+
+        var outputDirectory = @"/Users/inmos/Projects/dotNet/dotnetacademy/Homework3/output-books";
+        var newFilePath = Path.Combine(outputDirectory, $"{title}.txt");
+        
+
+        if (!Directory.Exists(outputDirectory))
+        {
+            Directory.CreateDirectory(outputDirectory);
+        }
+
+        var newFileContent =
+            $"Longest sentence by number of characters: {longestSenteceByNumberOfCharacters}\n\r\n\r" +
+            $"Shortest sentence by numbers of words: {shortestSentenceByNumberOfWords}\n\r\n\r" +
+            $"Longest word: {longestWord}\n\r\n\r" +
+            $"Most common letter: {mostCommonLetter}\n\r\n\r" +
+            $"Words sorted by number of uses in descending order: \n{wordsSortedByTheNumberOfUsesInDescendingOrder}";
+ 
+        File.WriteAllText(newFilePath, newFileContent);
+
+
 
         Console.WriteLine($"Processed: {Path.GetFileName(filePath)}");
     }
