@@ -36,7 +36,7 @@ class Program
         var punctuationCharacters = content.Where(char.IsPunctuation).ToArray();
 
 
-        var longestSenteceByNumberOfCharacters = sentences.OrderBy(x => x.Length).Last();
+        var longestSenteceByNumberOfCharacters = sentences.OrderBy(x => x.Length).LastOrDefault();
 
         var shortestSentenceByNumberOfWords = sentences.OrderBy(x => x.Split(wordSplitCharacters, StringSplitOptions.RemoveEmptyEntries).Length).FirstOrDefault().Trim();
         var longestWord = words.Where(w => !w.Any(char.IsPunctuation)).OrderByDescending(x => x.Length).FirstOrDefault();
@@ -46,8 +46,8 @@ class Program
             .GroupBy(letter => letter)
             .OrderBy(letters => letters.Count())
             .Select(group => group.Key)
-            .Last();
-
+            .LastOrDefault();
+        
         var wordsSortedByTheNumberOfUsesInDescendingOrder =
             string.Join("\n\r",
                 words
