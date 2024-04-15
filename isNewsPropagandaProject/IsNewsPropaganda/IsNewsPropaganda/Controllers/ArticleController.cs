@@ -1,3 +1,4 @@
+using IsNewsPropaganda.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IsNewsPropaganda.Controllers;
@@ -11,26 +12,9 @@ public class ArticleController : Controller
         _articleService = articleService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
-    }
-
-    
-    public IActionResult Details(Guid id)
-    {
-        return View();
-    }
-    
-    [HttpGet]
-    public IActionResult Create()
-    {
-        return View();
-    }
-    
-    [HttpPost]
-    public IActionResult Create()
-    {
-        return View();
+        var articles = await _articleService.GetArticlesByIdAsync();
+        return View(articles);
     }
 }
