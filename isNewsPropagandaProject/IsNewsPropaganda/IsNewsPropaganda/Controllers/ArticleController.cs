@@ -1,3 +1,4 @@
+using IsNewsPropaganda.Models;
 using IsNewsPropaganda.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,9 @@ public class ArticleController : Controller
         _articleService = articleService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<Article[]> Index()
     {
-        var articles = await _articleService.GetArticlesByIdAsync();
-        return View(articles);
+        var articles = await _articleService.GetArticlesAsync();
+        return articles;
     }
 }
