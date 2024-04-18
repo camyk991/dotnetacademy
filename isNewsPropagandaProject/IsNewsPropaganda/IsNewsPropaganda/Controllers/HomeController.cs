@@ -7,14 +7,17 @@ namespace IsNewsPropaganda.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IConfiguration _configuration;
+    public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
     {
         _logger = logger;
+        _configuration = configuration;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
+        var dataFromQuery = Request.Query;
         return View();
     }
 

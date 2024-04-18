@@ -9,8 +9,9 @@ public class ArticleService : IArticleService
 {
     private readonly IsNewsPropagandaDbContext _dbContext;
 
-    public ArticleService()
+    public ArticleService(IsNewsPropagandaDbContext dbContext)
     {
+        _dbContext = dbContext;
     }
 
     public Task<Article[]> GetArticlesAsync()

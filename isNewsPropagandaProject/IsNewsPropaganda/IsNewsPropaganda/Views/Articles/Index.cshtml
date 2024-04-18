@@ -1,5 +1,10 @@
 @model ArticleIndexViewModel
 
+@{
+    ViewBag.Title = "Articles";
+    Layout = "_Layout";
+}
+
 <h2>Articles</h2>
 
 @if (Model.Articles.Any())

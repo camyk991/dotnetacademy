@@ -1,5 +1,8 @@
 using System.Diagnostics;
 using IsNewsPropaganda.Data;
+using IsNewsPropaganda.RouteConstraints;
+using IsNewsPropaganda.Services.Abstractions;
+using IsNewsPropaganda.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
 
 namespace IsNewsPropaganda
@@ -12,9 +15,12 @@ namespace IsNewsPropaganda
 
             // Add services to the container.
             builder.Services.AddDbContext<IsNewsPropagandaDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+            // builder.Services.AddRouting(opt => opt.ConstraintMap.Add("positiveInt", typeof(PositiveIntConstraint)));
+            
             
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<IArticleService, ArticleService>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -27,11 +33,12 @@ namespace IsNewsPropaganda
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
+            // Add routing middleware
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
