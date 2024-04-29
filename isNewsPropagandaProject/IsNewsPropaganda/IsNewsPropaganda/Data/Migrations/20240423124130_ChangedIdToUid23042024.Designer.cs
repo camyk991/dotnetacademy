@@ -4,16 +4,19 @@ using IsNewsPropaganda.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace IsNewsPropaganda.Migrations
+namespace IsNewsPropaganda.Data.Migrations
 {
     [DbContext(typeof(IsNewsPropagandaDbContext))]
-    partial class IsNewsPropagandaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240423124130_ChangedIdToUid23042024")]
+    partial class ChangedIdToUid23042024
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

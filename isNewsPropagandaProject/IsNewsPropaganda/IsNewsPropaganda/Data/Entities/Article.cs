@@ -10,7 +10,7 @@ public class Article
     public string Content { get; set; }
     
     [ForeignKey("SourceId")]
-    public int SourceId { get; set; }
+    public int? SourceId { get; set; }
     
     [Range(0, 10, ErrorMessage = "Rating must be between 0 and 10")]
     public decimal Rating { get; set; }

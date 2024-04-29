@@ -19,10 +19,15 @@ public class ArticleService : IArticleService
         return _dbContext.Articles.ToArrayAsync();
     }
 
-    public Task<Article?> GetArticlesByIdAsync(Guid id)
+    public Task<Article?> GetArticlesByIdAsync(int id)
     {
         return _dbContext.Articles.SingleOrDefaultAsync(article => article.ArticleId.Equals(id));
     }
-    
+
+    public async Task<int> EditArticleAsync(Article article)
+    {
+        _dbContext.Articles.Update(article);
+        return await _dbContext.SaveChangesAsync();
+    }
     
 }

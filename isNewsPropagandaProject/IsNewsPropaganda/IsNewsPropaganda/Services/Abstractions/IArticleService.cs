@@ -7,7 +7,9 @@ public interface IArticleService
 {
     public Task<Article[]> GetArticlesAsync();
 
-    public Task<Article> GetArticlesByIdAsync(Guid id);
+    public Task<Article> GetArticlesByIdAsync(int id);
 
     // public Task<int> AddArticleAsync(Article article);
+
+    public Task<int> EditArticleAsync(Article article);
 }

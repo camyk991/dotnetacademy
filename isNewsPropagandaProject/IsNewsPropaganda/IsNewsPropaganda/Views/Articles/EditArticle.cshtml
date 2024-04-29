@@ -1,0 +1,38 @@
+@model ArticleModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "_Layout";
+}
+
+<h2>Edit Article</h2>
+
+<p>
+    @* @Model.Title *@
+ </p>   
+    
+    <div class="row">
+        <form asp-action="EditArticle" asp-controller="Articles" method="post">
+            <label class="form-label" asp-for="Title">Title</label>
+            <input class="form-control" asp-for="Title" type="text">
+            <span asp-validation-for="Title"></span>
+        
+            <label class="form-label" asp-for="Content">Content</label>
+            <textarea class="form-control" asp-for="Content"></textarea>
+            <span asp-validation-for="Content"></span>
+        
+            <label class="form-label" asp-for="Rating">Rating</label>
+            <input class="form-control" asp-for="Rating" type="number" step=".01" /> 
+            <span asp-validation-for="Rating"></span>
+        
+            <button>Submit</button>
+        </form>
+        
+            @if (!string.IsNullOrEmpty(ViewBag.UpdateMessage))
+            {
+                <div class="alert-info">
+                    @ViewBag.UpdateMessage
+                </div>
+            }
+
+    </div>
